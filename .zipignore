@@ -1,0 +1,9 @@
+.git/*
+.github/*
+composer.*
+package.json
+update.json
+DOCKER_ENV
+docker_tag
+*.log
+yarn.lock
