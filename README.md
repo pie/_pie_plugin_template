@@ -20,8 +20,7 @@ In order to deploy an update:
     * `release:major`
     * `release:minor`
     * `release:patch`
-1. When merged, the `release.yml` workflow will update all of your version numbers and commit them back into main and create a github release with two artifacts:
+1. When merged, the `release.yml` workflow will update all of your version numbers and commit them back into main and create a github release with an extra artifact:
     1. `plugin-slug.zip` - the uploadable plugin for manual installation
-    1. `update.zip` containing the files needed by the updater
 1. Updates should then show in wp-admin for any users of the plugin
 
