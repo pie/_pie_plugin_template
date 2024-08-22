@@ -17,7 +17,7 @@ In order to deploy an update:
 
 1. (Once) Enable Github Pages on your repository (Settings > Pages) so that a `update.json` can be read by the Update Checker in production sites.
 1. Run `composer install`.
-1. Add the following code to your plugin in order for the update checker to function:
+1. Add the following code to your plugin in order for the update checker to function (paths may need adjustment if this is not going in your main plugin file):
    ```/**
        * Load Composer autoloader
        */
@@ -26,9 +26,9 @@ In order to deploy an update:
       use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
       $update_checker = PucFactory::buildUpdateChecker(
-          'https://pie.github.io/bbpress-add-member-usernames/update.json',
+          'https://pie.github.io/{your-repository-slug}/update.json',
           __FILE__,
-          'bbpress-add-member-usernames'
+          '{your-repository-slug}'
       );```
 1. All updates can be branched out from a `next-release` branch.
 1. Create a pull request to merge the `next-release` branch into `main` and add the appropriate label:
