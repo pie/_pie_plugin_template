@@ -16,7 +16,22 @@ This plugin template is set up to work with integrated WordPress updates through
 In order to deploy an update:
 
 1. (Once) Enable Github Pages on your repository (Settings > Pages) so that a `update.json` can be read by the Update Checker in production sites.
-1. Create a pull request to merge your branch into `main` and add the appropriate label:
+1. Run `composer install`.
+1. Add the following code to your plugin in order for the update checker to function:
+   ```/**
+       * Load Composer autoloader
+       */
+      require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+
+      use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+      $update_checker = PucFactory::buildUpdateChecker(
+          'https://pie.github.io/bbpress-add-member-usernames/update.json',
+          __FILE__,
+          'bbpress-add-member-usernames'
+      );```
+1. All updates can be branched out from a `next-release` branch.
+1. Create a pull request to merge the `next-release` branch into `main` and add the appropriate label:
     * `release:major`
     * `release:minor`
     * `release:patch`
